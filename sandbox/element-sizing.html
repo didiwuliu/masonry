@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
 
-  <title>v2 shim</title>
+  <title>element sizing</title>
 
-  <link rel="stylesheet" href="examples.css" />
-
+  <link rel="stylesheet" href="sandbox.css" />
+  <style>
+/*    #container { width: 501px; }*/
+    .item, .grid-sizer { width: 20%; }
+    .item.w2 { width: 40%; }
+    .item.w3 { width: 60%; }
+  </style>
 </head>
 <body>
 
-  <h1>v2 shim</h1>
+  <h1>element sizing</h1>
 
   <div id="container" class="container">
+    <div class="grid-sizer"></div>
     <div class="item"></div>
     <div class="item h4"></div>
     <div class="item w2 h2"></div>
@@ -36,7 +42,6 @@
     <div class="item"></div>
   </div>
 
-<script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/eventEmitter/EventEmitter.js"></script>
 <script src="../bower_components/eventie/eventie.js"></script>
 <script src="../bower_components/doc-ready/doc-ready.js"></script>
@@ -44,27 +49,19 @@
 <script src="../bower_components/get-size/get-size.js"></script>
 <script src="../bower_components/jquery-bridget/jquery.bridget.js"></script>
 <script src="../bower_components/matches-selector/matches-selector.js"></script>
+<script src="../bower_components/fizzy-ui-utils/utils.js"></script>
 <script src="../bower_components/outlayer/item.js"></script>
 <script src="../bower_components/outlayer/outlayer.js"></script>
 
 <script src="../masonry.js"></script>
-<script src="js/masonry-v2-shim.js"></script>
 
 <script>
-$( function() {
-
-  var $container = $('#container').masonry({
-    isRTL: true,
-    gutterWidth: 0,
-    animationOptions: {
-      duration: 800
-    },
-    columnWidth: function( containerWidth ) {
-      return containerWidth / 4;
-    }
-    // isAnimated: false
+docReady( function() {
+  var container = document.querySelector('#container');
+  var msnry = new Masonry( container, {
+    columnWidth: '.grid-sizer',
+    percentPosition: true
   });
-
 });
 </script>
 

@@ -4,7 +4,9 @@
   "strict": true,
   "undef": true,
   "unused": true,
-  "predef": {
-    "define": false
+  "globals": {
+    "define": false,
+    "module": false,
+    "require": false
   }
 }
